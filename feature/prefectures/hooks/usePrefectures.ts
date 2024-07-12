@@ -1,3 +1,4 @@
+"use client";
 import useApi from "@/hooks/useApi";
 import { Prefecture } from "@/types";
 import { useEffect, useState, useRef } from "react";
