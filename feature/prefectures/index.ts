@@ -1,0 +1,1 @@
+export { default as PrefectureList } from './components/PrefectureList';
