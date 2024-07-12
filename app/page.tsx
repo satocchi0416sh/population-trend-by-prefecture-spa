@@ -1,9 +1,9 @@
-import Image from "next/image";
+import { PrefectureList } from "@/feature/prefectures";
 
 export default function Home() {
   return (
     <main>
-
+      <PrefectureList />
     </main>
   );
 }

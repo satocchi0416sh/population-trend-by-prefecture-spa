@@ -21,12 +21,11 @@ const useApi = (): UseApiReturnType => {
     const [error, setError] = useState<AxiosError<ErrorResponse> | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const refetch = useCallback(async (endpoint: string, options: AxiosRequestConfig = {}, withCredentials = true) => {
+    const refetch = useCallback(async (endpoint: string, options: AxiosRequestConfig = {}) => {
         setLoading(true);
         try {
             const response = await apiRequest({
                 url: endpoint,
-                withCredentials,
                 ...options
             });
             setData(response.data);
