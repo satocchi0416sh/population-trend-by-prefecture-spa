@@ -4,6 +4,6 @@ export interface Prefecture {
 }
 
 export interface PrefectureContextType {
-    selectedPrefectures: number[];
-    togglePrefecture: (prefCode: number) => void;
+    selectedPrefectures: Prefecture[];
+    togglePrefecture: (prefCode: Prefecture) => void;
 }

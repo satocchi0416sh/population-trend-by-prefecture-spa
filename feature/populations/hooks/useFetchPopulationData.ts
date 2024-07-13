@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback, useRef } from "react";
 import useApi from "@/hooks/useApi";
-import { PopulationResponse, PopulationResult } from "@/types";
+import { PopulationResponse, PopulationResult, Prefecture } from "@/types";
 
 interface CachedPopulationData {
     [prefCode: number]: PopulationResult;
@@ -36,14 +36,14 @@ const useFetchPopulationData = () => {
         }
     }, [data]);
 
-    const requestPopulationData = (prefCodes: number[]) => {
-        const newPrefCodes = prefCodes.filter(prefCode => !requestedPrefCodes.has(prefCode));
+    const requestPopulationData = (prefectures: Prefecture[]) => {
+        const newPrefCodes = prefectures.filter(prefecture => !requestedPrefCodes.has(prefecture.prefCode));
         if (newPrefCodes.length > 0) {
             newPrefCodes.forEach(prefCode => {
-                fetchPopulationData(prefCode);
+                fetchPopulationData(prefCode.prefCode);
                 setRequestedPrefCodes(prev => {
                     const updatedSet = new Set(prev);
-                    updatedSet.add(prefCode);
+                    updatedSet.add(prefCode.prefCode);
                     return updatedSet;
                 });
             });

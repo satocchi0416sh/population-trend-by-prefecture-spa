@@ -1,17 +1,17 @@
 "use client";
 import { useEffect } from "react";
 import useFetchPopulationData from "./useFetchPopulationData";
-import { PopulationYearData } from "@/types";
+import { PopulationYearData, Prefecture } from "@/types";
 
-const usePopulationData = (prefCodes: number[]) => {
+const usePopulationData = (prefectures: Prefecture[]) => {
     const { populationData, error, loading, requestPopulationData } = useFetchPopulationData();
 
     useEffect(() => {
-        requestPopulationData(prefCodes);
-    }, [prefCodes, requestPopulationData]);
+        requestPopulationData(prefectures);
+    }, [prefectures, requestPopulationData]);
 
-    const selectedPopulationData = prefCodes.map(prefCode => {
-        const result = populationData[prefCode];
+    const selectedPopulationData = prefectures.map(prefecture => {
+        const result = populationData[prefecture.prefCode];
         if (!result) {
             return null;
         }

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useState, ReactNode } from 'react';
-import { PrefectureContextType } from '@/types';
+import { Prefecture, PrefectureContextType } from '@/types';
 
 export const PrefectureContext = createContext<PrefectureContextType>({
     selectedPrefectures: [],
@@ -9,10 +9,10 @@ export const PrefectureContext = createContext<PrefectureContextType>({
 });
 
 export const PrefectureProvider = ({ children }: { children: ReactNode }) => {
-    const [selectedPrefectures, setSelectedPrefectures] = useState<number[]>([]);
+    const [selectedPrefectures, setSelectedPrefectures] = useState<Prefecture[]>([]);
 
-    const togglePrefecture = (prefCode: number) => {
-        setSelectedPrefectures((prev: number[]) =>
+    const togglePrefecture = (prefCode: Prefecture) => {
+        setSelectedPrefectures((prev: Prefecture[]) =>
             prev.includes(prefCode)
                 ? prev.filter(code => code !== prefCode)
                 : [...prev, prefCode]

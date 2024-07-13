@@ -16,11 +16,11 @@ const PopulationChart = () => {
         data.forEach((yearData) => {
             const existingEntry = mergedData.find(entry => entry.year === yearData.year);
             if (existingEntry) {
-                existingEntry[`prefecture_${selectedPrefectures[index]}`] = yearData.value;
+                existingEntry[`prefecture_${selectedPrefectures[index].prefCode}`] = yearData.value;
             } else {
                 mergedData.push({
                     year: yearData.year,
-                    [`prefecture_${selectedPrefectures[index]}`]: yearData.value
+                    [`prefecture_${selectedPrefectures[index].prefCode}`]: yearData.value
                 });
             }
         });
@@ -36,13 +36,13 @@ const PopulationChart = () => {
                     <CartesianGrid strokeDasharray="3 3" />
                     <Tooltip />
                     <Legend />
-                    {selectedPrefectures.map((prefCode) => (
+                    {selectedPrefectures.map((prefecture) => (
                         <Line
-                            key={prefCode}
+                            key={prefecture.prefCode}
                             type="monotone"
-                            dataKey={`prefecture_${prefCode}`}
+                            dataKey={`prefecture_${prefecture.prefCode}`}
                             stroke={`#${Math.floor(Math.random() * 16777215).toString(16)}`}
-                            name={`Prefecture ${prefCode}`}
+                            name={`Prefecture ${prefecture.prefName}`}
                         />
                     ))}
                 </LineChart>
