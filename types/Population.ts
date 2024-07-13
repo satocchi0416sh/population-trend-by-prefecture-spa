@@ -18,3 +18,10 @@ export interface PopulationResponse {
     message: string | null;
     result: PopulationResult;
 }
+
+export interface PopulationCategoryContextType {
+    populationCategories: string[];
+    selectedPopulationCategory: string;
+    setSelectedPopulationCategory: (category: string) => void;
+}
+
