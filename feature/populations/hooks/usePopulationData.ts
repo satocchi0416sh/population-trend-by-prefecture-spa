@@ -1,10 +1,11 @@
 "use client";
 import { useEffect } from "react";
-import useFetchPopulationData from "./useFetchPopulationData";
 import { PopulationYearData, Prefecture } from "@/types";
+import { usePopulationCategoryContext, useFetchPopulationData } from "..";
 
 const usePopulationData = (prefectures: Prefecture[]) => {
     const { populationData, error, loading, requestPopulationData } = useFetchPopulationData();
+    const { selectedPopulationCategory } = usePopulationCategoryContext();
 
     useEffect(() => {
         requestPopulationData(prefectures);
@@ -15,7 +16,7 @@ const usePopulationData = (prefectures: Prefecture[]) => {
         if (!result) {
             return null;
         }
-        const totalPopulationData = result.data.find(item => item.label === "総人口");
+        const totalPopulationData = result.data.find(item => item.label === selectedPopulationCategory);
         if (!totalPopulationData) {
             return null;
         }
