@@ -1,9 +1,14 @@
-import { PrefectureList } from "@/feature/prefectures";
+import { PopulationChart } from "@/feature/populations";
+import { PrefectureList, PrefectureProvider } from "@/feature/prefectures";
 
 export default function Home() {
+
   return (
     <main>
-      <PrefectureList />
+      <PrefectureProvider>
+        <PrefectureList />
+        <PopulationChart />
+      </PrefectureProvider>
     </main>
   );
 }
