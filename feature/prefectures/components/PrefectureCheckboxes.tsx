@@ -16,8 +16,7 @@ const PrefectureList: React.FC = () => {
                 {prefectures.map((prefecture: Prefecture) => (
                     <PrefectureCheckbox
                         key={prefecture.prefCode}
-                        prefCode={prefecture.prefCode}
-                        prefName={prefecture.prefName}
+                        prefecture={prefecture}
                         selectedPrefectures={selectedPrefectures}
                         togglePrefecture={togglePrefecture}
                     />
