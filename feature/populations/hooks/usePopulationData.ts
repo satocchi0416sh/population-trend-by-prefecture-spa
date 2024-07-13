@@ -1,35 +1,28 @@
 "use client";
-import { useEffect, useState } from "react";
-import { PopulationData } from "@/types";
-import useApi from "@/hooks/useApi";
+import { useEffect } from "react";
+import useFetchPopulationData from "./useFetchPopulationData";
+import { PopulationYearData } from "@/types";
 
-const usePopulationData = (prefCode: number) => {
-    const { data, error, loading, refetch } = useApi();
-    const [populationData, setPopulationData] = useState<PopulationData[]>([]);
-
-    useEffect(() => {
-        fetchPopulationData();
-    }, [prefCode]);
+const usePopulationData = (prefCodes: number[]) => {
+    const { populationData, error, loading, requestPopulationData } = useFetchPopulationData();
 
     useEffect(() => {
-        if (data) {
-            setPopulationData(data);
+        requestPopulationData(prefCodes);
+    }, [prefCodes, requestPopulationData]);
+
+    const selectedPopulationData = prefCodes.map(prefCode => {
+        const result = populationData[prefCode];
+        if (!result) {
+            return null;
         }
-    }, [data]);
+        const totalPopulationData = result.data.find(item => item.label === "総人口");
+        if (!totalPopulationData) {
+            return null;
+        }
+        return totalPopulationData.data;
+    }).filter(Boolean) as PopulationYearData[][];
 
-    const fetchPopulationData = () => {
-        refetch('/population/composition/perYear', {
-            headers: {
-                'X-API-KEY': process.env.NEXT_PUBLIC_RESAS_API_KEY
-            },
-            data: {
-                prefCode: prefCode,
-                cityCode: -1
-            }
-        });
-    };
-
-    return { populationData, error, loading };
+    return { populationData: selectedPopulationData, error, loading };
 };
 
 export default usePopulationData;
