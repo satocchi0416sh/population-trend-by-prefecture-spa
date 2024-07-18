@@ -12,7 +12,7 @@ describe('useApiフック', () => {
         jest.clearAllMocks();
     });
 
-    test('データの取得に成功する場合', async () => {
+    test('データの取得に成功すると、データが返される', async () => {
         const mockData = { data: 'test data' };
         const mockResponse: AxiosResponse = {
             data: mockData,
@@ -37,7 +37,7 @@ describe('useApiフック', () => {
         expect(result.current.loading).toBe(false);
     });
 
-    test('エラーを処理する場合', async () => {
+    test('エラーが発生した場合、エラーが返される', async () => {
         const mockError: AxiosError = {
             isAxiosError: true,
             toJSON: () => ({ message: 'test error' }),
