@@ -10,3 +10,5 @@ export type {
     PopulationResponse,
     PopulationCategoryContextType
 } from './Population';
+
+export type { ErrorResponse } from './Api';
