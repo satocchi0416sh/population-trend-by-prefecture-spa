@@ -1,19 +1,13 @@
 import { useState, useCallback } from 'react';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { apiRequest } from '@/utils/apiClient';
+import { ErrorResponse } from '@/types';
 
 interface UseApiReturnType {
     data: any;
     error: AxiosError<ErrorResponse> | null;
     loading: boolean;
     refetch: (endpoint: string, options?: AxiosRequestConfig, withCredentials?: boolean) => Promise<void>;
-}
-
-interface ErrorResponse {
-    message: string;
-    statusCode: number;
-    error?: string;
-    errors?: string[];
 }
 
 const useApi = (): UseApiReturnType => {
