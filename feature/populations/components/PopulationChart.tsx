@@ -1,9 +1,11 @@
 "use client";
 import React, { useRef, useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { GridLoader } from 'react-spinners';
+import { SyncLoader } from 'react-spinners';
 import { usePrefectureContext } from '@/feature/prefectures';
 import { usePopulationCategoryContext, usePopulationData } from '..';
+import { Chart } from '@/public';
+import Image from 'next/image';
 
 const PopulationChart = () => {
     const { selectedPrefectures } = usePrefectureContext();
@@ -27,8 +29,6 @@ const PopulationChart = () => {
             window.removeEventListener('resize', updateChartWidth);
         };
     }, []);
-
-    if (error) return <p>Error loading population data.</p>;
 
     const mergedData: { year: number;[key: string]: number }[] = [];
 
@@ -62,13 +62,29 @@ const PopulationChart = () => {
         });
     };
 
+    const errorMessage = () => {
+        if (error && error.response) {
+            switch (error.response.status) {
+                case 400:
+                    return '都道府県を選択してください';
+                case 404:
+                    return 'データが見つかりませんでした';
+                default:
+                    return 'エラーが発生しました';
+            }
+        }
+        return 'エラーが発生しました';
+    }
+
     return (
         <div className='bg-white mt-5 p-10 rounded-lg'>
             <h2 className='text-lg font-bold mb-5' ref={chartContainerRef}>{selectedPopulationCategory}</h2>
             {loading ? (
                 <div className='flex justify-center items-center h-[500px]'>
-                    <GridLoader color="#36d7b7" />
+                    <SyncLoader color="#36d7b7" />
                 </div>
+            ) : error ? (
+                <p>{errorMessage()}</p>
             ) : populationData.length > 0 ? (
                 <LineChart width={chartWidth} height={500} data={mergedData}>
                     <XAxis dataKey="year" />
@@ -87,8 +103,9 @@ const PopulationChart = () => {
                     ))}
                 </LineChart>
             ) : (
-                <div className='flex justify-center items-center h-[500px]'>
-                    <p>No prefectures selected</p>
+                <div className='flex flex-col items-center justify-center h-[500px]'>
+                    <p>都道府県を選択してください</p>
+                    <Image src={Chart} alt='Chart' width={500} height={500} />
                 </div>
             )}
         </div>
