@@ -1,5 +1,5 @@
-import { PrefectureList } from '@/feature/prefectures'
 import React from 'react'
+import { PrefectureList } from '@/feature/prefectures'
 
 const Sidebar = () => {
     return (
