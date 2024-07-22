@@ -11,7 +11,7 @@ export default function Home() {
           <AppBar />
           <div className="flex">
             <Sidebar />
-            <div>
+            <div className="p-10 bg-base-01 w-full">
               <PopulationCategory />
               <PopulationChart />
             </div>

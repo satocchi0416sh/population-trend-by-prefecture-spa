@@ -7,3 +7,5 @@ export { default as usePopulationData } from './hooks/usePopulationData';
 export { default as usePopulationCategoryContext } from './hooks/usePopulationCategory';
 export { default as usePopulationCategory } from './hooks/usePopulationCategory';
 export { default as useFetchPopulationData } from './hooks/useFetchPopulationData';
+
+export { default as PopulationTabItem } from './components/PopulationTabItem';
