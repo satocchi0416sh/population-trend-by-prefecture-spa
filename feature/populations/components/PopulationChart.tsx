@@ -19,16 +19,13 @@ const PopulationChart = () => {
         for (let i = 0; i < name.length; i++) {
             hash = name.charCodeAt(i) + ((hash << 5) - hash);
         }
-        let color = '#';
-        for (let i = 0; i < 3; i++) {
-            const value = (hash >> (i * 8)) & 0xFF;
-            color += value.toString(16).padStart(2, '0');
-        }
-        return color.replace(/^(#)(.{2})(.{2})(.{2})$/, (_, hash, r, g, b) => {
-            const adjust = (c: string) => Math.max(0, Math.min(255, parseInt(c, 16) - 50)).toString(16).padStart(2, '0');
-            return `${hash}${adjust(r)}${adjust(g)}${adjust(b)}`;
-        });
+        const h = hash % 360;
+        const s = 70;
+        const l = 50;
+
+        return `hsl(${h}, ${s}%, ${l}%)`;
     };
+
 
     return (
         <div className='bg-white mt-5 p-10 rounded-lg'>
