@@ -1,8 +1,8 @@
 "use client"
+import Image from 'next/image'
 import React from 'react'
 import { PrefectureList } from '@/feature/prefectures'
 import { ChevronLeft } from '@/public'
-import Image from 'next/image'
 
 interface BottomDrawerProps {
     isOpen: boolean
