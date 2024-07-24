@@ -1,18 +1,16 @@
-import React from 'react'
+import React from 'react';
 
 const AppBar = () => {
     return (
-        <>
-            <div className="hidden md:block">
-                <div className='px-10 py-5 border-b-2 border-gray-200'>
-                    <h1 className='font-bold text-xl'>CensusFlow</h1>
-                </div>
+        <div>
+            <div className="px-10 py-5 border-b-2 border-gray-200 hidden md:block bg-white">
+                <h1 className="font-bold text-xl">CensusFlow</h1>
             </div>
-            <div className="block md:hidden">
-                MobileNavigation
+            <div className="px-10 py-5 flex justify-center items-center bg-base-01 md:hidden">
+                <h1 className="font-bold text-xl">CensusFlow</h1>
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default AppBar
+export default AppBar;
