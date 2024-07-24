@@ -1,6 +1,6 @@
 "use client"
+import React from 'react'
 import { PrefectureList } from '@/feature/prefectures'
-import React, { useState } from 'react'
 import { ChevronLeft } from '@/public'
 import Image from 'next/image'
 
