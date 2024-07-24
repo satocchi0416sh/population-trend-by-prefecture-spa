@@ -1,0 +1,79 @@
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - duplicate
+      - won't-fix
+    authors:
+      - octocat
+      - bot-account
+  categories:
+    - title: Breaking Changes 🛠
+      labels:
+        - Semver-Major
+        - breaking-change
+      description: |
+        Major changes that could affect the system's behavior or require migrations.
+    - title: Exciting New Features 🎉
+      labels:
+        - Semver-Minor
+        - enhancement
+      description: |
+        New features and functionalities added to the system.
+    - title: Improvements ✨
+      labels:
+        - improvement
+        - refactor
+      description: |
+        Enhancements and optimizations to existing features.
+    - title: Bug Fixes 🐛
+      labels:
+        - bug
+        - fix
+      description: |
+        Corrections to known issues and bugs.
+    - title: Documentation 📚
+      labels:
+        - documentation
+        - docs
+      description: |
+        Updates to documentation and other informational resources.
+    - title: Other Changes
+      labels:
+        - "*"
+      description: |
+        Miscellaneous changes that don't fit into the above categories.
+  template: |
+    ## Release Notes
+
+    **Release Date:** {{date}}
+
+    ### Breaking Changes 🛠
+    {{#each breaking}}
+    - {{this.title}} (#{{this.number}}) - {{this.body}}
+    {{/each}}
+
+    ### Exciting New Features 🎉
+    {{#each features}}
+    - {{this.title}} (#{{this.number}}) - {{this.body}}
+    {{/each}}
+
+    ### Improvements ✨
+    {{#each improvements}}
+    - {{this.title}} (#{{this.number}}) - {{this.body}}
+    {{/each}}
+
+    ### Bug Fixes 🐛
+    {{#each bugfixes}}
+    - {{this.title}} (#{{this.number}}) - {{this.body}}
+    {{/each}}
+
+    ### Documentation 📚
+    {{#each documentation}}
+    - {{this.title}} (#{{this.number}}) - {{this.body}}
+    {{/each}}
+
+    ### Other Changes
+    {{#each others}}
+    - {{this.title}} (#{{this.number}}) - {{this.body}}
+    {{/each}}

@@ -31,7 +31,7 @@ CensusFlowは、React、Next.js、TailwindCSS、TypeScriptを使用して構築�
   <a href="https://population-trend-by-prefecture-spa.vercel.app/"><strong>デモを見る »</strong></a>
   <br />
   <br />
-  <a href="Backlogのwikiリンク"><strong>プロジェクト詳細 »</strong></a>
+  <a href="https://yumemi.notion.site/0e9ef27b55704d7882aab55cc86c999d"><strong>プロジェクト詳細 »</strong></a>
 </p>
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
