@@ -1,8 +1,8 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { usePrefectureContext } from '@/feature/prefectures';
-import { ErrorMessage, LoadingSpinner, useChartWidth, useMergedPopulationData, usePopulationCategoryContext, usePopulationData } from '..';
+import { ErrorMessage, LoadingSpinner, useChartWidth, useLoadingStateContext, useMergedPopulationData, usePopulationCategoryContext, usePopulationData } from '..';
 import { Chart } from '@/public';
 import Image from 'next/image';
 
@@ -13,6 +13,7 @@ const PopulationChart = () => {
 
     const { chartContainerRef, chartWidth } = useChartWidth();
     const mergedData = useMergedPopulationData({ populationData, selectedPrefectures });
+    const { setIsLoading } = useLoadingStateContext();
 
     const getColorFromName = (name: string) => {
         let hash = 0;
@@ -25,6 +26,10 @@ const PopulationChart = () => {
 
         return `hsl(${h}, ${s}%, ${l}%)`;
     };
+
+    useEffect(() => {
+        setIsLoading(loading);
+    }, [loading]);
 
 
     return (

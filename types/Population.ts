@@ -25,3 +25,7 @@ export interface PopulationCategoryContextType {
     setSelectedPopulationCategory: (category: string) => void;
 }
 
+export interface LoadingStateContextType {
+    isLoading: boolean
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+}

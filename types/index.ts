@@ -8,7 +8,8 @@ export type {
     PopulationCategory,
     PopulationResult,
     PopulationResponse,
-    PopulationCategoryContextType
+    PopulationCategoryContextType,
+    LoadingStateContextType
 } from './Population';
 
 export type { ErrorResponse } from './Api';
