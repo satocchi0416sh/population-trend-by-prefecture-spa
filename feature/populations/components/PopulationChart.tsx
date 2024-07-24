@@ -33,7 +33,7 @@ const PopulationChart = () => {
 
 
     return (
-        <div className='bg-white mt-5 p-10 rounded-lg'>
+        <div className='bg-white mt-5 md:p-10 p-5 rounded-lg'>
             <h2 className='text-lg font-bold mb-5' ref={chartContainerRef}>{selectedPopulationCategory}</h2>
             {loading ? (
                 <LoadingSpinner />
