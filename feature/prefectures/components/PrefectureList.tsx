@@ -1,7 +1,8 @@
 'use client'
 import { Prefecture } from '@/types';
-import { usePrefectures, PrefectureCheckbox, usePrefectureContext } from '..';
 import { SkeletonLoader } from '@/components';
+import { usePrefectures, PrefectureCheckbox, usePrefectureContext } from '..';
+import { useLoadingStateContext } from '@/feature/populations';
 
 const PrefectureList: React.FC = () => {
     const { prefectures, error, loading } = usePrefectures();

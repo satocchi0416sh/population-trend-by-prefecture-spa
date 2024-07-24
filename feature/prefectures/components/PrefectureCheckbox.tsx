@@ -1,3 +1,4 @@
+import { useLoadingStateContext } from '@/feature/populations';
 import { Prefecture } from '@/types';
 import React from 'react'
 
@@ -11,6 +12,8 @@ const PrefectureCheckbox: React.FC<PrefectureCheckboxProps> = ({ prefecture, sel
 
     const checked = selectedPrefectures.includes(prefecture);
     const onChange = () => togglePrefecture(prefecture);
+    const { isLoading } = useLoadingStateContext();
+
 
     return (
         <li
@@ -25,6 +28,7 @@ const PrefectureCheckbox: React.FC<PrefectureCheckboxProps> = ({ prefecture, sel
                     type="checkbox"
                     checked={checked}
                     onChange={onChange}
+                    disabled={isLoading}
                 />
             </label>
         </li>

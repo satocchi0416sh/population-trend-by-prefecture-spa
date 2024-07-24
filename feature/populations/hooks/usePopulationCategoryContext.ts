@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PopulationCategoryContext } from '..'; 
+import { PopulationCategoryContext } from '..';
 import { PopulationCategoryContextType } from '@/types';
 
 const usePopulationCategoryContext = (): PopulationCategoryContextType => {
