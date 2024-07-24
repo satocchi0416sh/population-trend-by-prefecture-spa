@@ -17,6 +17,7 @@ const config: Config = {
       colors: {
         "base-01": "#F6FAFC",
         "accent-01": "#1CA7EC",
+        "main-01": "#444444",
         "main-02": "#AFAFAF",
       },
     },
