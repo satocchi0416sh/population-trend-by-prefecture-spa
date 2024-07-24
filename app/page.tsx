@@ -9,9 +9,9 @@ export default function Home() {
       <PopulationCategoryProvider>
         <PrefectureProvider>
           <AppBar />
-          <div className="flex">
+          <div className="md:flex">
             <Sidebar />
-            <div className="p-10 bg-base-01 w-full">
+            <div className="p-4 md:p-10 bg-base-01 w-full">
               <PopulationCategory />
               <PopulationChart />
             </div>
